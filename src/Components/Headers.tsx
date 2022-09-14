@@ -60,8 +60,7 @@ export default class Headers extends Component<any, State> {
           <div className=" flex flex-wrap justify-between items-center mx-auto">
             <button
               type="button"
-              className="inline-flex justify-center items-center ml-3
-     text-gray-400 rounded-lg md:hidden hover:text-gray-900 
+              className="inline-flex justify-center items-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 
      focus:outline-none focus:ring-2 focus:ring-blue-300
       dark:text-gray-400 dark:hover:text-white 
       dark:focus:ring-gray-500"
@@ -92,7 +91,7 @@ export default class Headers extends Component<any, State> {
               }`}
               id="mobile-menu"
             >
-              <ul className="flex flex-col mt-4 bg-transparent rounded-lg border   border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent text-white ">
+              <ul className="flex flex-col mt-4 bg-transparent rounded-lg border   md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent text-white border-none ">
                 {arrNavbar.map((navs: any) => {
                   return (
                     <li key={navs.id} className="hover:bg-slate-300 p-4  ">
@@ -138,7 +137,7 @@ export default class Headers extends Component<any, State> {
                     }`}
                   >
                     <ul
-                      className="py-1 text-sm text-gray-700 dark:text-gray-400 "
+                      className="py-1 text-sm text-gray-700 dark:text-gray-400 bg-white "
                       aria-labelledby="dropdownLargeButton"
                     >
                       {dropDownArr.map((drops: any) => {

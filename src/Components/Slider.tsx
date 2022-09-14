@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Carousel } from "react-responsive-carousel";
 const ImageData = [
   {
     id: 1,
@@ -20,13 +19,30 @@ const ImageData = [
     alt: "",
   },
 ];
-const afterInterval = (arr: any, i: number) => {
-  arr[i].isHidden = false;
-};
-export default class Slider extends Component {
+let timer: any;
+
+export default class Slider extends Component<any, any> {
+  state = {
+    counter: 0,
+  };
+  afterInterval = async (arr: any, i: number) => {
+    timer = setInterval(async () => {
+      if (this.state.counter >= arr.length - 1) {
+        await this.setState({ counter: 0 });
+      } else {
+        await this.setState({ counter: this.state.counter + 1 });
+      }
+    }, 6000);
+  };
+  componentDidMount() {
+    try {
+      this.afterInterval(ImageData, 0);
+    } catch (error) {
+      console.log(error);
+      clearInterval(timer);
+    }
+  }
   render() {
-    afterInterval(ImageData, 1);
-    console.log(ImageData);
     return (
       <div
         id="carouselExampleSlidesOnly"
@@ -34,17 +50,13 @@ export default class Slider extends Component {
         data-bs-ride="carousel"
       >
         <div className="carousel-inner relative w-full overflow-hidden lg:h-[95vh]  sm:h-full">
-          {ImageData.map((images: any) => {
-            return (
-              <div className="carousel-item active relative float-left w-full">
-                <img
-                  src={images.url}
-                  className={`w-full ${images.isHidden ? "hidden" : "block"}`}
-                  alt={images.alt}
-                />
-              </div>
-            );
-          })}
+          <div className="carousel-item active relative float-left w-full">
+            <img
+              src={ImageData[this.state.counter].url}
+              className={"w-full block"}
+              alt={ImageData[this.state.counter].alt}
+            />
+          </div>
         </div>
       </div>
     );
