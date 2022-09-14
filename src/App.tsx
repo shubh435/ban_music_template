@@ -231,7 +231,7 @@ function App() {
           </div>
 
           <p className="text-center mt-5">
-            Powered by
+            Powered by {" "}
             <a href="/" target="_blank">
               shubham
             </a>
